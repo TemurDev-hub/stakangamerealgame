@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stakan O‘yini</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="user-info">
+    <div class="user-profile">
+      <img id="avatar" src="./img/Avatar.jpg" alt="Avatar" class="avatar">
+      <div>
+        <h3 id="name">Yuklanmoqda...</h3>
+        <p id="level">--</p>
+        <p id="xp">--</p>
+      </div>
+    </div>
+    <div>
+      <p id="rank">--</p>
+      <p id="coins">Tanga: 1000</p>
+    </div>
+  </div>
+
+  <main>
+    <h1>🥎 Stakan O‘yini</h1>
+    <button id="startButton">Start</button>
+
+    <div class="game-container">
+      <div class="cup" id="cup1"><img class="cup-img" src="picture/cup.png" alt="cup"></div>
+      <div class="cup" id="cup2"><img class="cup-img" src="picture/cup.png" alt="cup"></div>
+      <div class="cup" id="cup3"><img class="cup-img" src="picture/cup.png" alt="cup"></div>
+    </div>
+
+    <p id="message">O‘yin boshlanishi uchun Start tugmasini bosing</p>
+    <div class="bet-controls">
+      <input type="number" id="betInput" placeholder="Miqdor" min="1" max="1000">
+      <div class="bet-buttons">
+        <button class="bet-button" id="minBet">Min (300)</button>
+        <button class="bet-button" id="maxBet">Max (1000)</button>
+        <button class="bet-button" id="doubleBet">2x</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    REKLAMA
+  </footer>
+
+  <audio id="correctSound" src="correct-voice/correct.mp3"></audio>
+  <audio id="incorrectSound" src="incorrect-voice/incorrect.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

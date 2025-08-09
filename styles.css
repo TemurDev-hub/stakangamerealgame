@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Rajdhani', sans-serif;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(white 1px, transparent 1px),
+              radial-gradient(white 1px, transparent 1px);
+  background-position: 0 0, 50px 50px;
+  background-size: 100px 100px;
+  animation: stars 100s linear infinite;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+@keyframes stars {
+  from { transform: translateY(0); }
+  to   { transform: translateY(1000px); }
+}
+
+body.shake {
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-10px); }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.user-info {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #fff;
+  gap: 10px;
+  padding: 15px 20px;
+  border-bottom: 1px solid #0ff;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 4;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #0ff;
+}
+
+.user-info h3 {
+  color: #0ff;
+  font-size: clamp(18px, 5vw, 22px);
+}
+
+.user-info p {
+  margin: 5px 0 0;
+  font-size: clamp(12px, 3.5vw, 14px);
+  opacity: 0.8;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px 100px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+h1 {
+  color: #e0e1dd;
+  font-size: clamp(2em, 8vw, 3em);
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(65, 90, 119, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(65, 90, 119, 0.3); }
+  100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(65, 90, 119, 0.6); }
+}
+
+#startButton {
+  padding: clamp(12px, 4vw, 16px) clamp(30px, 8vw, 40px);
+  font-size: clamp(1.2em, 4.5vw, 1.6em);
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(45deg, #ff006e, #ff4d6d);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(255, 77, 109, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+#startButton:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 40px rgba(255, 77, 109, 0.9), inset 0 0 15px rgba(255, 255, 255, 0.5);
+  background: linear-gradient(45deg, #ff4d6d, #ff006e);
+}
+
+#startButton:disabled {
+  background: linear-gradient(45deg, #555, #777);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.bet-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.bet-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.bet-button {
+  padding: clamp(8px, 2.5vw, 10px) clamp(15px, 4vw, 20px);
+  font-size: clamp(1em, 3.5vw, 1.2em);
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(45deg, #00ccff, #00ff99);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 153, 0.6);
+}
+
+.bet-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0, 255, 153, 0.9);
+  background: linear-gradient(45deg, #00ff99, #00ccff);
+}
+
+.bet-button:disabled {
+  background: linear-gradient(45deg, #555, #777);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+#betInput {
+  padding: clamp(8px, 2.5vw, 10px);
+  width: clamp(100px, 25vw, 120px);
+  font-size: clamp(1em, 3.5vw, 1.2em);
+  border: 1px solid #0ff;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#betInput:focus {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.game-container {
+  position: relative;
+  width: clamp(280px, 90vw, 400px);
+  height: clamp(180px, 55vw, 220px);
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.cup {
+  width: clamp(80px, 25vw, 100px);
+  height: clamp(110px, 35vw, 140px);
+  position: absolute;
+  bottom: clamp(40px, 12vw, 50px);
+  transition: left 0.7s ease, transform 0.5s ease;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.cup-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  transition: transform 0.3s ease;
+  transform: rotate(180deg);
+}
+
+.cup.covered .cup-img {
+  transform: rotate(180deg) translateY(clamp(-20px, -5vw, -25px));
+}
+
+.cup-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #c8a065 0%, #b07530 100%);
+  border-radius: 50% 50% 15% 15% / 20% 20% 10% 10%;
+  box-shadow:
+    inset 0 -5px 10px rgba(0, 0, 0, 0.4),
+    inset 0 5px 15px rgba(255, 255, 255, 0.3),
+    0 8px 20px rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+  perspective: 800px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: rotate(180deg);
+}
+
+.cup-body::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  opacity: 0.2;
+}
+
+.cup-body::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 20%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4), transparent);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  z-index: 1;
+}
+
+.cup.covered .cup-body {
+  transform: translateY(clamp(30px, 10vw, 40px));
+}
+
+.cup.lift {
+  transform: translateY(clamp(-30px, -10vw, -35px));
+  filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
+}
+
+.ball {
+  width: clamp(25px, 8vw, 30px);
+  height: clamp(25px, 8vw, 30px);
+  background: radial-gradient(circle at 30% 30%, #00ff99, #00ccff);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  animation: bounce 0.8s infinite alternate ease-in-out;
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.cup:not(.covered) .ball {
+  display: block;
+}
+
+@keyframes bounce {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(clamp(-10px, -3vw, -12px)); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+#message {
+  font-size: clamp(1.2em, 4vw, 1.4em);
+  font-weight: 600;
+  color: #e0e1dd;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+  padding: clamp(8px, 2.5vw, 10px) clamp(15px, 4vw, 20px);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+#message:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+footer.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: clamp(10px, 3vw, 15px);
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  color: #fff;
+  font-size: clamp(10px, 3vw, 12px);
+  border-top: 1px solid #0ff;
+  z-index: 3;
+  backdrop-filter: blur(5px);
+}
+
+@media (max-width: 768px) {
+  .user-info {
+    padding: 10px 15px;
+    gap: 8px;
+  }
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .user-info h3 {
+    font-size: clamp(16px, 4.5vw, 18px);
+  }
+
+  .user-info p {
+    font-size: clamp(10px, 3vw, 12px);
+  }
+
+  .game-container {
+    width: clamp(240px, 85vw, 320px);
+    height: clamp(160px, 50vw, 200px);
+  }
+
+  .cup {
+    width: clamp(60px, 22vw, 80px);
+    height: clamp(90px, 30vw, 110px);
+    bottom: clamp(30px, 10vw, 40px);
+  }
+
+  .bet-buttons {
+    gap: 8px;
+  }
+
+  .bet-button {
+    padding: clamp(6px, 2vw, 8px) clamp(12px, 3.5vw, 15px);
+    font-size: clamp(0.9em, 3vw, 1em);
+  }
+
+  #betInput {
+    width: clamp(80px, 20vw, 100px);
+    font-size: clamp(0.9em, 3vw, 1em);
+  }
+}
+
+@media (max-width: 480px) {
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 10px;
+  }
+
+  .user-profile {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .game-container {
+    width: clamp(200px, 80vw, 280px);
+    height: clamp(140px, 45vw, 180px);
+  }
+
+  .cup {
+    width: clamp(50px, 20vw, 70px);
+    height: clamp(80px, 25vw, 100px);
+    bottom: clamp(25px, 8vw, 35px);
+  }
+
+  #startButton {
+    padding: clamp(10px, 3vw, 12px) clamp(20px, 6vw, 30px);
+    font-size: clamp(1em, 3.5vw, 1.2em);
+  }
+
+  #message {
+    font-size: clamp(1em, 3.5vw, 1.2em);
+    padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 15px);
+  }
+
+  .bet-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
